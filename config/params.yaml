@@ -9,7 +9,7 @@ scenario_module:
     scale_reference_velocity: false
     safe_horizon:
         n_bar: 6 #9 # Support to terminate at
-        sqp_iterations: 2
+        sqp_iterations: 10 # Nr. of iterations of SQP
         enable_termination: false
         terminate_equality_tolerance: 0.001
         enable_scenario_removal: false # Remove scenarios online
@@ -32,8 +32,8 @@ scenario_module:
         activation_range: 400.0   # How far away pedestrians are sampled
     visualisation:
         all_scenarios: false # Warning: Slows down the controller
-        support_scenarios: true 
-        polygon_scenarios: true
+        support_scenarios: true # Support scenarios
+        polygon_scenarios: false # Scenarios making up the polygons
         removed_scenarios: false
         constraints: true
         draw_disc: 0
