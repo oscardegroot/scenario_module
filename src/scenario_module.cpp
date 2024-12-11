@@ -135,7 +135,6 @@ namespace ScenarioModule
 
       if (exit_code != 1) // stop (it cannot recover)
       {
-        LOG_VALUE("SQP Infeasible", exit_code);
         SCENARIO_WARN_STREAM("[Solver " << _solver->_solver_id << "] SQP(" << iteration
                                         << ") iterate became infeasible (exit_code = " << exit_code << ")");
 
