@@ -1,0 +1,40 @@
+scenario_module:
+    debug_output: false # Prints lots of information (use when debugging!)
+    enable_safe_horizon: true
+    use_real_samples: false       # Use a database instead of model
+    sample_distribution:
+        binomial_distribution: false
+        propagate_covariance: false  # If true propagates the received Gaussian covariance over the horizon
+    use_json_trajectory: false
+    scale_reference_velocity: false
+    safe_horizon:
+        n_bar: 6 #9 # Support to terminate at
+        sqp_iterations: 2
+        enable_termination: false
+        terminate_equality_tolerance: 0.001
+        enable_scenario_removal: false # Remove scenarios online
+    s_mpcc:
+        seed: 126 #-1 is random!
+        checked_constraints: 250 #250 # (in paper l) Should be scaled with scenarios
+        received_object_sigma: 1.0
+        database:
+            size: 100
+            truncated: false
+            truncated_radius: 3.5 # in terms of sigma (only used if truncated gaussian)
+            build_database: true # Set to true to force building new samples
+    safe_sampling:
+        compute_automatically: true
+        confidence: 0.01
+        removal_count: 0
+        sample_size: 10 # Used if not automatic # 3sigma: 53050  # 1 sigma 820
+    polygon:
+        range: 3.0 # maximum range of the regions
+        activation_range: 400.0   # How far away pedestrians are sampled
+    visualisation:
+        all_scenarios: false # Warning: Slows down the controller
+        support_scenarios: true 
+        polygon_scenarios: true
+        removed_scenarios: false
+        constraints: true
+        draw_disc: 0
+        scale: 1.0
